@@ -1,6 +1,6 @@
 name: pdfrx_fork
 description: A clone version of pdfrx package with some additional features and bug fixes supporting for Flutter < 3.19.
-version: 0.0.1
+version: 0.0.2
 repository: https://github.com/duynguyen250399/pdfrx_fork
 
 environment:
