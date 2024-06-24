@@ -5,13 +5,13 @@
 lib_tag = 'pdfium-apple-v6'
 
 Pod::Spec.new do |s|
-  s.name             = 'pdfrx'
+  s.name             = 'pdfrx_fork'
   s.version          = '0.0.1'
-  s.summary          = 'Yet another PDF renderer for Flutter using PDFium.'
+  s.summary          = 'A clone of PDF renderer for Flutter using PDFium.'
   s.description      = <<-DESC
-  Yet another PDF renderer for Flutter using PDFium.
+  PDF Renderer for Flutter using PDFium. This is a fork of the original pdfrx package with the PDFium library included.
                        DESC
-  s.homepage         = 'https://github.com/espresso3389/pdfrx'
+  s.homepage         = 'https://github.com/duynguyen250399/pdfrx_fork'
   s.license          = { :type => 'BSD', :file => '../LICENSE' }
   s.author           = { 'Takashi Kawasaki' => 'espresso3389@gmail.com' }
   s.source           = { :path => '.' }
