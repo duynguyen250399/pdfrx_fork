@@ -9,7 +9,9 @@ import 'pdfium_bindings.dart';
 
 String _getModuleFileName() {
   if (Platform.isAndroid) return 'libpdfrx.so';
-  if (Platform.isIOS || Platform.isMacOS) return 'pdfrx.framework/pdfrx';
+  if (Platform.isIOS || Platform.isMacOS) {
+    return 'pdfrx_fork.framework/pdfrx_fork';
+  }
   if (Platform.isWindows) return 'pdfrx.dll';
   if (Platform.isLinux) {
     return '${File(Platform.resolvedExecutable).parent.path}/lib/libpdfrx.so';

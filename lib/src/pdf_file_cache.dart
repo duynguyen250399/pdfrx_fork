@@ -99,10 +99,10 @@ class PdfFileCacheNative extends PdfFileCache {
 
   late Uint8List _cacheState;
   int? _cacheBlockSize;
-  late int _cacheBlockCount;
-  late int _fileSize;
-  late int _headerSize;
-  late int _cacheStatePosition;
+  int _cacheBlockCount = 0;
+  int _fileSize = 0;
+  int _headerSize = 0;
+  int _cacheStatePosition = 0;
   HttpCacheControlState _cacheControlState = HttpCacheControlState.empty;
   bool _initialized = false;
   RandomAccessFile? _raf;
@@ -467,14 +467,14 @@ Future<_DownloadResult> _downloadBlock(
   bool isFullDownload = false;
   if (response.statusCode == 206 && contentRange != null) {
     final m = RegExp(r'bytes (\d+)-(\d+)/(\d+)').firstMatch(contentRange);
-    fileSize = int.parse(m!.group(3)!);
+    fileSize = int.parse(m?.group(3) ?? '');
   } else {
     // The server does not support range request and returns the whole file.
     fileSize = response.contentLength;
     isFullDownload = true;
   }
   if (!cache.isInitialized) {
-    await cache.setFileIdentity(fileSize!);
+    await cache.setFileIdentity(fileSize ?? 0);
   }
   await cache.setCacheControlState(
       HttpCacheControlState.fromHeaders(response.headers));
@@ -494,5 +494,5 @@ Future<_DownloadResult> _downloadBlock(
     await cache.setCached(blockId, lastBlock: blockId + blockCount - 1);
   }
 
-  return _DownloadResult(fileSize!, isFullDownload, false);
+  return _DownloadResult(fileSize ?? 0, isFullDownload, false);
 }
