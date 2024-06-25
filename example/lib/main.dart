@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'PDF Example',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -33,7 +34,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    final uri = Uri.parse('https://icseindia.org/document/sample.pdf');
+    final uri = Uri.parse('https://pdfobject.com/pdf/sample.pdf');
     final params = PdfViewerParams(
       backgroundColor: Colors.white,
       loadingBannerBuilder: (context, bytesDownloaded, totalBytes) {
